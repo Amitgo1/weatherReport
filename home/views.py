@@ -13,6 +13,7 @@ def generate_otp(phone):
         response = requests.get(url)
         data = response.json()
         print('Generate OTP Response', data)
+        print(otp)
         return otp
     except Exception as e:
         return None
