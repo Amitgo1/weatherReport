@@ -9,7 +9,7 @@ from home.models import LoginUser, LoginLogs
 def generate_otp(phone):
     try:
         otp = random.randint(100000, 999999)
-        url = f'https://2factor.in/API/V1/47cb888c-9071-11ef-8b17-0200cd936042/SMS/+91{phone}/{otp}'
+        url = f'https://2factor.in/API/V1/b15d39ca-9273-11ef-8b17-0200cd936042/SMS/+91{phone}/{otp}'
         response = requests.get(url)
         data = response.json()
         print('Generate OTP Response', data)
