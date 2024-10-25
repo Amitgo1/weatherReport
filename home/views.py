@@ -59,12 +59,13 @@ def verify_otp(request):
         logs = LoginLogs.objects.filter(login_user=user, is_used=False)
         if not any(logs):
             return render(request, "home/verify_otp.html", {"message": "Invalid OTP"})
-        log = logs.first()
+        log = logs.last()
         user_otp = request.POST.get("otp")
         print(user_otp, log.otp, user.username)
         if str(log.otp) != str(user_otp):
             return render(request, "home/verify_otp.html", {"message": "Invalid OTP"})
         log.is_used = True
+        logs.update(is_used = True)
         log.save()
         user.is_verified = True
         user.save()
