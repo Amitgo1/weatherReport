@@ -1,0 +1,62 @@
+# Python-specific ignore patterns
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+*.sqlite3
+*.db
+
+# If you are using Django migrations, ignore the compiled migration files
+*.pyc
+*.pyo
+
+# Ignore virtual environment directories
+venv/
+ENV/
+env/
+.venv/
+.ENV/
+.env/
+
+# Ignore local Django settings
+.env
+
+# Ignore the database (if using SQLite)
+db.sqlite3
+*.sqlite3
+
+# Ignore static and media files
+/static/
+/media/
+
+# Ignore Jupyter notebook checkpoints
+.ipynb_checkpoints
+
+# If you are using VSCode or PyCharm, ignore their project-specific files
+.vscode/
+.idea/
+
+# Node modules (if using npm/yarn in the project)
+node_modules/
+
+# Ignore compiled files or temporary files from editors like vim, sublime, etc.
+*.swp
+*.swo
+*~
+
+# MacOS-specific files
+.DS_Store
+
+# Backup files
+*.bak
+*.tmp

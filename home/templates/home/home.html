@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Report</title>
+    
+    <!-- Table and Layout Styling -->
+    <style>
+        /* Styling for the table */
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        /* Styling for the logout button */
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .logout-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        /* Styling for the heading and layout */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #4CAF50;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    </style>
+    
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Logout button -->
+        <button class="logout-btn" onclick="logout()">Logout</button>
+
+        <!-- Main Heading -->
+        <h1>Weather Report</h1>
+
+        <!-- City Name Display -->
+        <h2>City Name: {{city}}</h2>
+
+        <!-- Weather Data Table -->
+        <h2>Weather Table</h2>
+
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Temperature</th>
+                <th>Humidity</th>
+                <th>Wind Speed</th>
+                <th>Pressure Surface Level</th>
+            </tr>
+            {% for obj in data %}
+            <tr>
+                <td>{{ obj.time }}</td>
+                <td>{{ obj.values.temperatureMax }}</td>
+                <td>{{ obj.values.humidityMax }}</td>
+                <td>{{ obj.values.windSpeedMax }}</td>
+                <td>{{ obj.values.pressureSurfaceLevelMax }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <!-- JavaScript onload function -->
+    <script>
+        // Function to be executed when the page loads
+        window.onload = function() {
+          if (window.location.search === ""){
+            getLocation();
+          }
+            // You can write your custom logic here
+        };
+
+        // Example logout function
+        function logout() {
+            window.location.href = "/logout";
+        }
+    </script>
+
+    <script src="/static/text.js"></script>
+</body>
+</html>

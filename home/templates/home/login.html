@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #74ebd5 0%, #acb6e5 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            width: 100%;
+            animation: fadeIn 0.7s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+       
+
+        label {
+            display: block;
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+
+        
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            form {
+                padding: 20px;
+            }
+
+            input[type="text"], input[type="submit"] {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+<form method="POST">
+    {% csrf_token %}
+    
+    <label for="name">USER NAME:</label>
+    <input type="text" id="name" name="name" placeholder="Enter your username" required>
+    
+    <label for="number">MOBILE NUMBER:</label>
+    <input type="text" id="number" name="number" placeholder="Enter your number" required>
+    
+    <input type="submit" value="Submit">
+</form>
+{% if message %}
+<h1>
+{{message}}
+</h1>
+{% endif %}
+
+
+
+</body>
+</html>
+
